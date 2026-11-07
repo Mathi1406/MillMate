@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Billing | MillMate
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="topbar">
+   <a class="brand" href="index.html">
+    <span class="brand-mark">
+     FM
+    </span>
+    <span>
+     <h2>
+      MillMate
+     </h2>
+     <small>
+      Flour Mill Management
+     </small>
+    </span>
+   </a>
+   <nav class="nav">
+    <a data-nav="index.html" href="index.html">
+     Home
+    </a>
+    <a data-nav="dashboard.html" href="dashboard.html">
+     Dashboard
+    </a>
+    <a data-nav="billing.html" href="billing.html">
+     Billing
+    </a>
+    <a data-nav="credit.html" href="credit.html">
+     Credit
+    </a>
+    <a data-nav="products.html" href="products.html">
+     Products
+    </a>
+    <a data-nav="unit.html" href="unit.html">
+     Electricity
+    </a>
+    <a data-nav="reports.html" href="reports.html">
+     Reports
+    </a>
+    <button class="btn logout-btn" data-logout="true" type="button">
+     Log out
+    </button>
+   </nav>
+  </header>
+  <main>
+   <div class="page-head">
+    <div>
+     <h1>
+      Create bill
+     </h1>
+     <p class="muted">
+      Add items and save a bill once. Credit bills automatically appear in Credit.
+     </p>
+    </div>
+    <button class="btn secondary" onclick="history.length&gt;1?history.back():location.href='index.html'">
+     &larr; Back
+    </button>
+   </div>
+   <section class="panel no-print" id="shopSettingsPanel">
+    <details>
+     <summary class="section-title" style="cursor:pointer">Shop details (used on printed bills)</summary>
+     <div class="form-grid">
+      <div class="field"><label for="shopName">Shop name</label><input id="shopName" placeholder="Enter shop name"/></div>
+      <div class="field"><label for="shopPhone">Mobile number</label><input id="shopPhone" placeholder="Enter mobile number"/></div>
+      <div class="field" style="grid-column:1/-1"><label for="shopAddress">Address</label><textarea id="shopAddress" rows="2" placeholder="Enter shop address"></textarea></div>
+      <div class="field"><label for="shopGst">GST number (optional)</label><input id="shopGst" placeholder="GSTIN (optional)"/></div>
+      <div class="field"><label for="shopFooter">Bill footer message</label><input id="shopFooter" placeholder="Thank you! Visit again."/></div>
+     </div>
+     <button class="btn secondary" id="saveShopSettings" type="button">Save shop details</button>
+     <span class="muted" id="shopSettingsMessage" aria-live="polite"></span>
+    </details>
+   </section>
+   <section class="panel">
+    <div class="form-grid">
+     <div class="field">
+      <label for="customerName">
+       Customer name *
+      </label>
+      <input autocomplete="off" id="customerName" placeholder="Enter customer name"/>
+     </div>
+     <div class="field">
+      <label for="paymentMethod">
+       Payment method *
+      </label>
+      <select id="paymentMethod">
+       <option value="Cash">
+        Cash
+       </option>
+       <option value="UPI">
+        UPI
+       </option>
+       <option value="Credit">
+        Credit
+       </option>
+      </select>
+     </div>
+    </div>
+    <div class="notice">
+     Bill number:
+     <strong id="billNumber">
+      &mdash;
+     </strong>
+     &middot; Date:
+     <strong id="billDate">
+      &mdash;
+     </strong>
+    </div>
+    <h2 class="section-title">
+     Add item
+    </h2>
+    <div class="form-grid">
+     <div class="field">
+      <label for="product">
+       Product
+      </label>
+      <select id="product">
+      </select>
+     </div>
+     <div class="field">
+      <label for="price">
+       Price per unit (₹)
+      </label>
+      <input id="price" min="0" step="0.01" type="number"/>
+     </div>
+     <div class="field">
+      <label for="quantity">
+       Quantity (kg / units)
+      </label>
+      <input id="quantity" min="0.01" placeholder="e.g. 5" step="0.01" type="number"/>
+     </div>
+     <div class="field">
+      <label>
+       &nbsp;
+      </label>
+      <button class="btn" id="addItemBtn">
+       Add item
+      </button>
+     </div>
+    </div>
+    <div class="table-wrap" style="margin-top:18px">
+     <table id="billTable">
+      <thead>
+       <tr>
+        <th>
+         #
+        </th>
+        <th>
+         Product
+        </th>
+        <th>
+         Rate
+        </th>
+        <th>
+         Quantity
+        </th>
+        <th>
+         Amount
+        </th>
+        <th class="no-print">
+         Action
+        </th>
+       </tr>
+      </thead>
+      <tbody id="billItems">
+       <tr>
+        <td class="empty" colspan="6">
+         No items added yet.
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="bill-total">
+     <span>
+      Subtotal:
+      <strong id="subtotal">
+       ₹0.00
+      </strong>
+     </span>
+     <span>
+      Grand total:
+      <strong id="grandTotal">
+       ₹0.00
+      </strong>
+     </span>
+    </div>
+    <div class="actions no-print">
+     <button class="btn" id="saveBillBtn">
+      Save bill
+     </button>
+     <button class="btn secondary" id="printBillBtn">
+      Print saved bill
+     </button>
+     <button class="btn danger" id="clearBillBtn">
+      Clear form
+     </button>
+    </div>
+    <div class="notice" hidden="" id="billMessage">
+    </div>
+   </section>
+   <section id="printReceipt" class="print-receipt" aria-hidden="true"></section>
+  </main>
+  <script src="js/auth.js">
+  </script>
+  <script src="js/app.js">
+  </script>
+  <script src="js/billing.js">
+  </script>
+ </body>
+</html>

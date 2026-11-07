@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | MillMate</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <main class="login-wrap">
+    <section class="login-card">
+      <div class="brand">
+        <span class="brand-mark">FM</span>
+        <span><h2>MillMate</h2><small>Flour Mill Management</small></span>
+      </div>
+      <h1 class="login-title">Welcome back</h1>
+      <p class="muted">Administrator sign in to access the MillMate workspace.</p>
+      <form id="loginForm" class="login-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <p id="loginError" class="form-error" role="alert" hidden>Incorrect username or password.</p>
+        <button class="btn login-submit" type="submit">Log in</button>
+      </form>
+    </section>
+  </main>
+  <script src="js/auth.js"></script>
+</body>
+</html>

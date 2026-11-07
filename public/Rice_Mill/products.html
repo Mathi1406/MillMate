@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Products | MillMate
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="topbar">
+   <a class="brand" href="index.html">
+    <span class="brand-mark">
+     FM
+    </span>
+    <span>
+     <h2>
+      MillMate
+     </h2>
+     <small>
+      Flour Mill Management
+     </small>
+    </span>
+   </a>
+   <nav class="nav">
+    <a data-nav="index.html" href="index.html">
+     Home
+    </a>
+    <a data-nav="dashboard.html" href="dashboard.html">
+     Dashboard
+    </a>
+    <a data-nav="billing.html" href="billing.html">
+     Billing
+    </a>
+    <a data-nav="credit.html" href="credit.html">
+     Credit
+    </a>
+    <a data-nav="products.html" href="products.html">
+     Products
+    </a>
+    <a data-nav="unit.html" href="unit.html">
+     Electricity
+    </a>
+    <a data-nav="reports.html" href="reports.html">
+     Reports
+    </a>
+    <button class="btn logout-btn" data-logout="true" type="button">
+     Log out
+    </button>
+   </nav>
+  </header>
+  <main>
+   <div class="page-head">
+    <div>
+     <h1>
+      Products &amp; rates
+     </h1>
+     <p class="muted">
+      Manage generic products and prices used by billing.
+     </p>
+    </div>
+    <button class="btn secondary" onclick="history.length&gt;1?history.back():location.href='index.html'">
+     &larr; Back
+    </button>
+   </div>
+   <section class="panel">
+    <h2 class="section-title">
+     Add product
+    </h2>
+    <div class="form-grid">
+     <div class="field">
+      <label for="productName">
+       Product name
+      </label>
+      <input id="productName" placeholder="e.g. Wheat grinding"/>
+     </div>
+     <div class="field">
+      <label for="productPrice">
+       Price per unit (₹)
+      </label>
+      <input id="productPrice" min="0" placeholder="e.g. 8" step="0.01" type="number"/>
+     </div>
+    </div>
+    <div class="actions">
+     <button class="btn" id="saveProductBtn">
+      Save product
+     </button>
+     <button class="btn secondary" id="resetProductsBtn">
+      Restore sample products
+     </button>
+    </div>
+   </section>
+   <section class="panel" style="margin-top:18px">
+    <h2 class="section-title">
+     Product list
+    </h2>
+    <div class="table-wrap">
+     <table>
+      <thead>
+       <tr>
+        <th>
+         Product
+        </th>
+        <th>
+         Rate (₹)
+        </th>
+        <th>
+         Action
+        </th>
+       </tr>
+      </thead>
+      <tbody id="productRows">
+      </tbody>
+     </table>
+    </div>
+   </section>
+  </main>
+  <script src="js/auth.js">
+  </script>
+  <script src="js/app.js">
+  </script>
+  <script src="js/products.js">
+  </script>
+ </body>
+</html>

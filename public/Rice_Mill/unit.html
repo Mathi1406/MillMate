@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Electricity Units | MillMate
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="topbar">
+   <a class="brand" href="index.html">
+    <span class="brand-mark">
+     FM
+    </span>
+    <span>
+     <h2>
+      MillMate
+     </h2>
+     <small>
+      Flour Mill Management
+     </small>
+    </span>
+   </a>
+   <nav class="nav">
+    <a data-nav="index.html" href="index.html">
+     Home
+    </a>
+    <a data-nav="dashboard.html" href="dashboard.html">
+     Dashboard
+    </a>
+    <a data-nav="billing.html" href="billing.html">
+     Billing
+    </a>
+    <a data-nav="credit.html" href="credit.html">
+     Credit
+    </a>
+    <a data-nav="products.html" href="products.html">
+     Products
+    </a>
+    <a data-nav="unit.html" href="unit.html">
+     Electricity
+    </a>
+    <a data-nav="reports.html" href="reports.html">
+     Reports
+    </a>
+    <button class="btn logout-btn" data-logout="true" type="button">
+     Log out
+    </button>
+   </nav>
+  </header>
+  <main>
+   <div class="page-head">
+    <div>
+     <h1>
+      Electricity unit records
+     </h1>
+     <p class="muted">
+      Record meter readings to track usage over time.
+     </p>
+    </div>
+    <button class="btn secondary" onclick="history.length&gt;1?history.back():location.href='index.html'">
+     &larr; Back
+    </button>
+   </div>
+   <section class="panel">
+    <div class="form-grid">
+     <div class="field">
+      <label for="startUnit">
+       Starting meter reading
+      </label>
+      <input id="startUnit" min="0" placeholder="e.g. 1250" step="0.01" type="number"/>
+     </div>
+     <div class="field">
+      <label for="endUnit">
+       Ending meter reading
+      </label>
+      <input id="endUnit" min="0" placeholder="e.g. 1284" step="0.01" type="number"/>
+     </div>
+    </div>
+    <div class="actions">
+     <button class="btn" id="saveUnitBtn">
+      Save reading
+     </button>
+    </div>
+    <div class="notice">
+     Latest entry usage:
+     <strong id="totalUnit">
+      0
+     </strong>
+     units
+    </div>
+   </section>
+   <section class="panel" style="margin-top:18px">
+    <h2 class="section-title">
+     Meter history
+    </h2>
+    <div class="table-wrap">
+     <table>
+      <thead>
+       <tr>
+        <th>
+         Date
+        </th>
+        <th>
+         Start
+        </th>
+        <th>
+         End
+        </th>
+        <th>
+         Usage
+        </th>
+        <th>
+         Action
+        </th>
+       </tr>
+      </thead>
+      <tbody id="unitRows">
+      </tbody>
+     </table>
+    </div>
+   </section>
+  </main>
+  <script src="js/auth.js">
+  </script>
+  <script src="js/app.js">
+  </script>
+  <script src="js/unit.js">
+  </script>
+ </body>
+</html>

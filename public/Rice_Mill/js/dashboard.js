@@ -1,0 +1,3 @@
+document.addEventListener('DOMContentLoaded',()=> {
+  const M=window.MillMate;const bills=M.getBills();const today=M.dateISO();const todays=bills.filter(b=>(b.dateOnly||M.dateISO(b.date))===today);document.getElementById('todaySales').textContent=M.money(todays.reduce((s,b)=>s+Number(b.total||0),0));document.getElementById('billCount').textContent=bills.length;const pending=bills.filter(b=>b.paymentMethod==='Credit').reduce((s,b)=>s+M.balanceForBill(b),0);document.getElementById('pendingAmount').textContent=M.money(pending);const units=M.getUnits();document.getElementById('latestUnits').textContent=units.length?units[units.length-1].total:0;
+});
